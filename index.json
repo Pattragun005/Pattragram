@@ -1,0 +1,22 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "location": "Japan",
+        "description" : "anything",
+        "day":"22",
+        "month":"10",
+        "year":"2017"
+
+      },{
+        "id": 2,
+        "location": "New York",
+        "description" : "anything",
+        "day":"22",
+        "month":"10",
+        "year":"2017"
+      }
+
+      ]
+    
+  }
