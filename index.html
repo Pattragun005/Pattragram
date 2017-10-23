@@ -31,7 +31,19 @@
             </div>
             <div class="right corner-button">
               <ons-toolbar-button>
-                <ons-icon icon="ion-ios-more,material:ion-android-more-vertical"></ons-icon>
+                  <ons-button class="option-arrow" modifier="quiet" onclick="ons.openActionSheet({
+                    cancelable: true,
+                    buttons: [
+                      'Edit',
+                      'Delete',           
+                      {
+                        label: 'Cancel',
+                        icon: 'md-close'
+                      }
+                    ]
+                  })">
+                <ons-icon icon="ion-ios-more, material:ion-android-more-vertical"></ons-icon>
+                
               </ons-toolbar-button>
             </div>
           </ons-list-item>
@@ -40,9 +52,9 @@
           </div>
           <div id="big">
             <div class="post-caption">
-              <b>Travel budget &nbsp </b>{{travel-budget}}</div>
+              <b>Travel budget &nbsp </b>{{budget}}</div>
             <div class="post-caption">
-              <b>Ways to go &nbsp </b> {{ways2go}}</div>
+              <b>Ways to go &nbsp </b> {{way2go}}</div>
             <div class="post-caption">
               <b>Items must have &nbsp </b>{{item}}</div>
             <div class="post-caption">
