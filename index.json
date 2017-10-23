@@ -2,19 +2,13 @@
     "posts": [
       {
         "id": 1,
-        "location": "Japan",
-        "description" : "anything",
-        "day":"22",
-        "month":"10",
-        "year":"2017"
+        "location": "Oud Batavia,Indonesia",
+        "travel-budget" : "30,000 THB on 5 days",
+        "ways2go":"Taking on the bus from the cantral of Jakarta",
+        "item":"mask,umbrella",
+        "beware":"steal, over rate of food for tourists.",
+        "time": "1 HOUR AGO"
 
-      },{
-        "id": 2,
-        "location": "New York",
-        "description" : "anything",
-        "day":"22",
-        "month":"10",
-        "year":"2017"
       }
 
       ]
