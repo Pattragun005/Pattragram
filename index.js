@@ -5,9 +5,10 @@ $.get(url, function (data) {
   var diffDays = 0;
   for (var i = 0; i < data.length; i++) {
     var rendered = Mustache.render(template, data[i]);
-    $(".post").append(rendered);
+    $("#timeline").append(rendered);
   }
 });});
+
 document.addEventListener('init', function (event) {
 
   var page = event.target;

@@ -2,7 +2,7 @@
     
     font-size: 25px;
     
-    font-family: 'Frijole', cursive;
+    font-family: 'Orbitron', sans-serif;
   
 }
 #toolbar-icon{
@@ -276,7 +276,7 @@
   .toolbar__title {
     text-align: center;
     color: #1f1f21;
-    font-family: 'Frijole', cursive;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .toolbar-button {
