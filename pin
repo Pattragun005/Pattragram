@@ -1,0 +1,49 @@
+ //read
+  $("#btnG").click(function () {
+    $.ajax({
+      url: url,
+      method: "GET",
+      success: function (data, status, xhr) {
+        console.log(data);
+        $("#show").append(data[2].title);
+      }
+    })
+  });
+  //delete
+  $("#btnD").click(function () {
+    $.ajax({
+      url: url + "/1", // 2  is id you want to delete
+      method: "DELETE",
+      success: function (data, status, xhr) {
+        console.log(data);
+      }
+    })
+  });
+  //create
+  $("#btnC").click(function () {
+    $.post(url, {
+      title: "John",
+      author: "2pm"
+    });
+    alert('complete');
+  });
+  //update have error
+  $("#btnU").click(function () {
+    $.get(url + "/3", function (data, status) {
+      console.log(data);
+      var newuser = {};
+      newuser.id = data.id;
+      newuser.title = "zzzzzzzzzzzzzzz";
+      console.log(JSON.stringify(newuser));
+      var updateUrl = url + "/3";
+      $.ajax({
+        url: updateUrl,
+        type: 'PUT',
+        data: newuser,
+        success: function (result) {
+          console.log('Updated!');
+        }
+      });
+    });
+  });
+});

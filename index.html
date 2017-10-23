@@ -34,14 +34,20 @@
                   <ons-button class="option-arrow" modifier="quiet" onclick="ons.openActionSheet({
                     cancelable: true,
                     buttons: [
-                      'Edit',
-                      'Delete',           
+                    {
+                      label: 'Edit',
+                      icon: 'fa-trash'
+                    },
+                      {
+                        label: 'Delete',
+                        icon: 'fa-pencil-square-o'
+                      },          
                       {
                         label: 'Cancel',
                         icon: 'md-close'
                       }
                     ]
-                  })">
+                  })"   }).then(function (index) { console.log('index: ', index) })>
                 <ons-icon icon="ion-ios-more, material:ion-android-more-vertical"></ons-icon>
                 
               </ons-toolbar-button>
@@ -50,6 +56,7 @@
           <div style="text-align: center; position: relative;" ondblclick="like(2)">
             <img class="post-image" src="images/post-01.jpg" style="width:100%">
           </div>
+          
           <div id="big">
             <div class="post-caption">
               <b>Travel budget &nbsp </b>{{budget}}</div>
