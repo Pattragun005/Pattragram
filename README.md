@@ -1,2 +1,2 @@
 # Pattragram
-This code is for studying full-stack web development
+I will keep on developing untill it is getting perfect ! !
