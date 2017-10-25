@@ -1,2 +1,2 @@
 # Pattragram
-I will keep on developing untill it is getting perfect ! !
+I will keep on developing untill it is getting perfect on Play store ! !
