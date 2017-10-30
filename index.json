@@ -13,6 +13,13 @@
       "way2go": "Taking on the bus from the central of Jarkata",
       "item": "mask,umbrella",
       "beware": "steal, over rate of food for tourists."
+    },
+    {
+      "budget": "test",
+      "way2go": "",
+      "item": "",
+      "beware": "",
+      "id": 3
     }
   ]
 }

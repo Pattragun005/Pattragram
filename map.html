@@ -29,24 +29,30 @@
       var map, infoWindow;
       
       function initMap() {
+        
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 7.894443, lng: 98.352760},
+          center: {lat: 7.894443, lng: 98.352760}, // เส้นรุ้งเส้นแวงนี้ น้องเอามาเองใช่ป้ะ เทียวอะไรที่หอตัวเอง 55555+
+          title: "Test",
           zoom: 18
         });
         infoWindow = new google.maps.InfoWindow;
 
+        
+
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          navigator.geolocation.getCurrentPosition(function(position) { 
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
             
             infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here.');
-
             
+           infoWindow.setContent("Your Are HERE !!!");
+          
+            
+           // console.log(center);
           
 
             infoWindow.open(map);
@@ -89,3 +95,4 @@
 maps.googleapis.com
 window.google = window.google || {}; google.maps = google.maps || {}; (function() { function getScript(src) { var s = document.createElement('script'); s.src = src; document.body.appendChild(s); } var modules = google.maps.modules = {}; google.maps.__gjsload__ = function(name, text) { modules[name]…
 maps.googleapis.com
+ไอโค๊ด 3 บรรทัดนี้ มันไปตรงไหนเนีย นั้นสิ!^.< 
