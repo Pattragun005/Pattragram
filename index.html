@@ -9,67 +9,80 @@
   <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
   <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
-  <script src="index.js"></script>
+  <script src="index.js"></script> 
 
-  <script id="template" type="x-tmpl-mustache">
-    <ons-card class="posts{{id}}">
-      <ons-list-item class="post_title">
-        <div class="left">
-          <img class="list-item__thumbnail" src="images/profile.jpg">
-        </div>
+  <script id="template" type="x-tmpl-mustache"> 
+      <ons-card class="post">
+          <ons-list-item class="post_title">
+            <div class="left">
+              <img class="list-item__thumbnail" src="profile.jpg">
+            </div>
 
-        <div class="center">
-          <div class="list-item__title">
-            <b>g_u_n_n_ie</b>
-            <div>&nbsp</div>
-          <!--  <div class="list-item__subtitle" style="font-size: 12px">Fushimi Inari Shrine, Kyoto</div> -->
+
+            <div class="center">
+              <div class="list-item__title">
+                <b>g_u_n_n_ie</b>
+
+                <div class="list-item__subtitle" style="font-size: 12px" onclick="location.replace('map.html')">Show Pined Location</div> 
+
+              </div>
+              <div class="list-item__subtitle" style="font-size: 12px">{{location}}</div>
+            </div>
+            <div class="right corner-button">
+              <ons-toolbar-button>
+                  <ons-button class="option-arrow" modifier="quiet" onclick="ons.openActionSheet({
+                    cancelable: true,
+                    buttons: [
+                    {
+                      label: 'Edit',
+                      icon: 'fa-trash'
+                    },
+                      {
+                        label: 'Delete',
+                        icon: 'fa-pencil-square-o'
+                      },          
+                      {
+                        label: 'Cancel',
+                        icon: 'md-close'
+                      }
+                    ]
+                  }).then(function (index) { 
+                    console.log(index);
+                    if(index===0){
+                        edit({{id}});
+                    } 
+                    if(index===1){
+                      deleteData({{id}});
+                  } 
+                })">
+                <ons-icon icon="ion-ios-more, material:ion-android-more-vertical"></ons-icon>
+                
+              </ons-toolbar-button>
+            </div>
+          </ons-list-item>
+          <div style="text-align: center; position: relative;" ondblclick="like(2)">
+            <img class="post-image" src="post-01.jpg" style="width:100%">
           </div>
+          
+          <div id="big">
+            <div class="post-caption">
+              <b>Travel budget &nbsp </b>{{budget}}</div>
+            <div class="post-caption">
+              <b>Ways to go &nbsp </b> {{way2go}}</div>
+            <div class="post-caption">
+              <b>Items must have &nbsp </b>{{item}}</div>
+            <div class="post-caption">
+              <b>Beware &nbsp </b>{{beware}}</div>
 
-        </div>
-        <div class="right corner-button">
-          <ons-toolbar-button>
-            <ons-button class="option-arrow" modifier="quiet" onclick='editpost({{id}})'>Edit </ons-toolbar-button>
+            <div class="post-time">{{time}}</div>
          
-              <ons-button class="option-arrow" modifier="quiet" onclick='deletepost({{id}})'>Delete </ons-toolbar-button>
-                </ons-toolbar-button>
-        </div>
-      </ons-list-item>
-      <div style="text-align: center; position: relative;" ondblclick="like(2)">
-        <img class="post-image" src="images/post-01.jpg" style="width:100%">
-      </div>
-
-      <div id="big">
-        <div class="post-caption">
-          <b>Travel budget &nbsp </b>
-          <label id="budget{{id}}">{{budget}}</label>
-          <input type="hidden" id="budgetedit{{id}}" value="{{budget}}"> </input>
-        </div>
-
-
-        <div class="post-caption">
-          <b>Ways to go &nbsp </b>
-          <label id="way2go{{id}}">{{way2go}}</label>
-          <input type="hidden" id="way2goedit{{id}}" value="{{way2go}}"> </input>
-        </div>
-
-        <div class="post-caption">
-
-          <b>Items must have &nbsp </b>
-          <label id="item{{id}}">{{item}}</label>
-          <input type="hidden" id="itemedit{{id}}" value="{{item}}"> </input>
-        </div>
-        <div class="post-caption">
-          <b>Beware &nbsp </b>
-          <label id="beware{{id}}">{{beware}}</label>
-          <input type="hidden" id="bewareedit{{id}}" value="{{beware}}"> </input>
-        </div>
-
-
-    </ons-card>
+        </ons-card>
   </script>
   <title>Pattragram</title>
 </head>
@@ -88,15 +101,8 @@
   <template id="home.html">
     <ons-page class="main_pages" id="home-page">
       <ons-toolbar>
-
-        <div class="left">
-          <a href="map.html">
-            <ons-icon id="toolbar-icon" size="30px" icon="ion-map, material:"></ons-icon>
-          </a>
-        </div>
         <div class="center" id="topic">Pattragram</div>
         <div class="right">
-
           <ons-icon id="toolbar-icon" size="30px" onclick="location.replace('postpin.html')" icon="ion-compose, material:"></ons-icon>
         </div>
       </ons-toolbar>
@@ -104,8 +110,7 @@
       <div id="timeline">
 
         <!--    post1    -->
-
+   
       </div>
 </body>
-
 </html>

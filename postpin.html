@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
+    
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,7 @@
     <script src="index.js"></script> 
 </head>
 
-<body>
+<body onload="Edit();">
     <div>
 
         <ons-page class="main_pages" id="camera-page">
@@ -32,28 +33,32 @@
             <form>
             <ul class="list">
                 <li class="list-item list-item--nodivider">
-                    <div class="list-item__center list-item--nodivider__left"><b>Travel budget</b>&nbsp <input type="text" id="budget" name="budget"><br>
+                    <div class="list-item__center list-item--nodivider__center"><b>Travel budget</b>&nbsp <input type="text" id="budget" name="budget"><br>
                         </div>
                 </li>
                 <li class="list-item list-item--nodivider">
-                    <div class="list-item__center list-item--nodivider__left"><b>Ways to go</b>&nbsp <input type="text" id="way2go" name="way2go"><br>
+                    <div class="list-item__center list-item--nodivider__center"><b>Ways to go</b>&nbsp <input type="text" id="way2go" name="way2go"><br>
                         </div>
                 </li>
                 <li class="list-item list-item--nodivider">
-                    <div class="list-item__center list-item--nodivider__left"><b>Items must have</b>&nbsp <input type="text" id="item" name="item"><br>
+                    <div class="list-item__center list-item--nodivider__center"><b>Items must have</b>&nbsp <input type="text" id="item" name="item"><br>
                     </div>
                 </li>
                 <li class="list-item list-item--nodivider">
-                    <div class="list-item__center list-item--nodivider__left"><b>Beware</b> &nbsp <input type="text" id="beware" name="beware"><br> </div>
+                    <div class="list-item__center list-item--nodivider__center"><b>Beware</b> &nbsp <input type="text" id="beware" name="beware"><br> </div>
                 </li>
                 <li>
                     <p style="text-align: center; margin: 10px;">
                         <ons-button id="postpin">Post</ons-button>
                       </p>
                 </li>
+                <li>
+                    <p style="text-align: center; margin: 10px;">
+                        <ons-button id="update" onclick="Update();">Update</ons-button>
+                      </p>
+                </li>
             </ul>
-
-           
+      
             </form>
 
         </ons-page>

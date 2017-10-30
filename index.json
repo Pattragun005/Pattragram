@@ -1,11 +1,18 @@
 {
   "posts": [
     {
-      "budget": "dsd",
-      "way2go": "advdv",
-      "item": "asvf",
-      "beware": "asdv",
+      "budget": "50000 THB on 5 days",
+      "way2go": "Taking on the bus from the central of Jarkata",
+      "item": "mask,umbrella",
+      "beware": "steal, over rate of food for tourists.",
       "id": 1
+    },
+    {
+      "id": 2,
+      "budget": "1,000 THB on 2 days",
+      "way2go": "Taking on the bus from the central of Jarkata",
+      "item": "mask,umbrella",
+      "beware": "steal, over rate of food for tourists."
     }
   ]
 }

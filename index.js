@@ -1,101 +1,97 @@
-function deletepost(id) {
-  alert('DELETE ?');
-
-  //Delete from back end
+function deleteData(id){
   $.ajax({
-    url: "http://localhost:3000/posts/" + id, // post id
-    type: "DELETE" // Use DELETE
-  })
-  alert('CONFIRM ?');
-  setTimeout(window.location.href = "index.html");
-  //Delete from front end
-  $("#post" + id).empty();
-
+    url: ' http://localhost:3000/posts/'+id,
+    type: 'DELETE',
+        dataType: 'json',
+        success: function (data, status, xhr) {
+         alert('ลบได้แล้วเว้ย')// นี้คือเสดแล้วใช่ป่ะของ Delete
+      }
+});
 }
 
-function editpost(id, budget, way2go, item, beware) {
-  console.log();
-  var url = "http://localhost:3000/posts";
-  $("#budget" + id).hide();
-  $("#budgetedit" + id).prop('type', "text");
-  $("#way2go" + id).hide();
-  $("#way2goedit" + id).prop('type', "text");
-  $("#item" + id).hide();
-  $("#itemedit" + id).prop('type', "text");
-  $("#beware" + id).hide();
-  $("#bewareedit" + id).prop('type', "text");
+var idpost;
 
-}
+function Edit(){
+  
+              let params = {}
+              document.location.search.substr(1).split('&').forEach(pair => {
+              [key, value] = pair.split('=')
+                  params[key] = value
+              })
+              console.log(location.search);
+              if(location.search == ""){
+                  document.getElementById('update').style.visibility = 'hidden' ;
+                  document.getElementById('postpin').style.visibility = 'visible' ;
+                  return;
+              }
+  
+              $("#budget").val(decodeURIComponent(params['budget']));
+              $("#way2go").val(decodeURIComponent(params['way2go']));
+              $("#item").val(decodeURIComponent(params['item']));
+              $("#beware").val(decodeURIComponent(params['beware']));
+  
+              idpost = decodeURIComponent(params['id']);
+  
+              document.getElementById('postpin').style.visibility = 'hidden' ;
+              document.getElementById('update').style.visibility = 'visible' ;
+              
+          }
 
-function savepost(id, budget, way2go, item, beware) {
-  console.log();
+          function Update(){
+           
+            var data = 
+              {
+                budget: $("#budget").val(),
+                way2go: $("#way2go").val(),
+                item: $("#item").val(),
+                beware: $("#beware").val(),
+                id: idpost
+              };
 
-  var url = "http://localhost:3000/posts";
+              console.log(data);
 
-  $("#budget" + id).show();
-  $("#budgetedit" + id).prop('type', "hidden");
-  $("#way2go" + id).show();
-  $("#way2goedit" + id).prop('type', "hidden");
-  $("#item" + id).show();
-  $("#itemedit" + id).prop('type', "hidden");
-  $("#beware" + id).show();
-  $("#bewareedit" + id).prop('type', "hidden");
+            $.ajax({
+              url: "http://localhost:3000/posts/" + idpost,
+              type: 'PUT', 
+              data: data,
+              success: function (result) {
+                alert('อัพเดดได้แล้วโว้ยยยยยยยยยยย!!!')
+                setTimeout(window.location.href = "index.html", 1000);
+            }});
 
-  var budget = budget;
-  var way2go = way2go;
-  var item = item;
-  var beware = beware;
-  var newposts = {};
+          }
 
-  newposts.id = id;
-  newposts.budget = $("#budget" + id).val();
-  newposts.way2go = $("#way2go" + id).val();
-  newposts.item = $("#item" + id).val();
-  newposts.beware = $("#beware" + id).val();
+var items = [];
+function edit(id){
+  var url = "http://localhost:3000/posts/" + id ;
+  $.getJSON( url, function( data ) {
+    
+    $.each( data, function( key, val ) {
+      items.push(val);
+    });
 
-  var urls = "http://localhost:3000/posts/" + data.id;
-  $.ajax({
-    type: 'PUT',
-    data: newposts,
-    url: urls,
-    success: function () {
-      //no data...just a success (200) status code
-      console.log(newposts);
-    }
+    window.location.href = "postpin.html?"+ "budget=" + items[1] 
+    +"&"+ "way2go=" + items[2]
+    +"&"+ "item=" + items[3]
+    +"&"+ "beware=" + items[4]
+    +"&"+ "id=" + items[0];
+
+    //item[0] = budget
+    //item[1] = way2go
+    //item[2] = item
+    //item[3] = beware
+
+
   });
-
+ 
 }
 
-function updatepost(id, budget, way2go, item, beware) {
 
-  var budget = budget;
-  var way2go = way2go;
-  var item = item;
-  var beware = beware;
-  var newposts = {};
 
-  newposts.id = id;
-  newposts.budget = $("#budget" + id).val();
-  newposts.way2go = $("#way2go" + id).val();
-  newposts.item = $("#item" + id).val();
-  newposts.beware = $("#beware" + id).val();
+$(document).ready(function(){
 
-  var url = "http://localhost:3000/posts/" + id;
-  $.ajax({
-    type: 'PUT',
-    data: newposts,
-    url: url,
-    success: function () {
-      //no data...just a success (200) status code
-      console.log(newposts);
-    }
-  });
-}
-
-$(document).ready(function () {
-
-  //insert
-  var url = "http://localhost:3000/posts";
+//insert
+var url = "http://localhost:3000/posts";
   $("#postpin").click(function () {
 
     var budget = $("#budget").val();
@@ -104,27 +100,27 @@ $(document).ready(function () {
     var beware = $("#beware").val();
 
     $.post(url, {
-
-      budget: budget,
-      way2go: way2go,
-      item: item,
+      
+      budget : budget,
+      way2go : way2go,
+      item : item,
       beware: beware
-
+     
     });
-    alert('POST?');
-    setTimeout(window.location.href = "index.html", 1000);
+    alert('completed');
+    setTimeout(window.location.href = "index.html", 1000); 
   });
 
+//delete
+  
 
-  //read
-
-  var url = "http://localhost:3000/posts";
-  $.get(url, function (data) {
-    var template = $('#template').html();
-    var diffDays = 0;
-    for (var i = 0; i < data.length; i++) {
-      var rendered = Mustache.render(template, data[i]);
-      $("#timeline").append(rendered);
-    }
-  });
-});
+//read
+var url = "http://localhost:3000/posts";
+$.get(url, function (data) {
+  var template = $('#template').html();
+  var diffDays = 0;
+  for (var i = 0; i < data.length; i++) {
+    var rendered = Mustache.render(template, data[i]);
+    $("#timeline").append(rendered);
+  }
+});});
