@@ -1,0 +1,23 @@
+{
+  "user": [
+    {
+      "username": "test2",
+      "password": "test1234",
+      "name": "nameTest",
+      "email": "emailTest@gmail.com",
+      "id": 1
+    },
+    {
+      "username": "test1",
+      "password": "test5678",
+      "name": "nameTest2",
+      "email": "emailTest2@gmail.com",
+      "id": 2
+    }
+  ],
+  "posts": [],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

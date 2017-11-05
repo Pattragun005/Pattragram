@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "406778955476",
+    "firebase_url": "https://pattragram.firebaseio.com",
+    "project_id": "pattragram",
+    "storage_bucket": "pattragram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406778955476:android:68754bc765c1bb49",
+        "android_client_info": {
+          "package_name": "com.pattragram.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406778955476-h3s5r6s4ujs31ita2m6kge6rqcrt982r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw57SCEfl8_wy2y4muab6my7LbzRdcdmk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
